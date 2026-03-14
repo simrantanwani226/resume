@@ -34,10 +34,12 @@ Bengaluru, India | [email] | [phone]
 
 ## Projects
 
-**SmartHire** - *Python, FastAPI, React*
+**SmartHire** - _Python, FastAPI, React_
+
 - AI-powered job recommendation platform that parses resumes and matches candidates to relevant positions using NLP-based skill extraction
 
-**Compete-Finder** - *Go, ConnectRPC, Protobuf*
+**Compete-Finder** - _Go, ConnectRPC, Protobuf_
+
 - Competitive intelligence tool that aggregates and analyzes startup ecosystem data
 
 ---
