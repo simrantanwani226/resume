@@ -20,11 +20,11 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 - Primary backend developer for [**Matrrverse**](https://apps.apple.com/in/app/matrrverse/id6751951342) and **Astroverse** apps, building user-facing content APIs using Go and ConnectRPC
 - Integrated Fynd third-party platform into the Java/Spring Boot system
-- Achieved **~5x reduction** in monthly cloud spend by optimizing build and deployment infrastructure
+- Contributed to **~5x reduction** in monthly cloud spend as part of the team by optimizing build and deployment infrastructure
 - Built internal user-facing tools on the Healofy app using Go Fiber
 - Maintained and enhanced the core Healofy backend (Java/Spring Boot, PostgreSQL)
 
-### Analyst | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | Aug 2024 – Apr 2025
+### Business Analyst | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | Aug 2024 – Apr 2025
 
 - Automated subscription and revenue reporting workflows, reducing manual effort by **~60%**
 - Analyzed subscription and marketplace datasets to deliver actionable insights for Product, Finance, and Growth teams
@@ -44,6 +44,8 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ## Education
 
-**MCA** | Dayananda Sagar Academy of Technology & Management, Bengaluru | 2022–2024 | CGPA: 9.46
+**MCA** | Dayananda Sagar Academy of Technology & Management, Bengaluru<br>
+2022–2024 | CGPA: 9.46
 
-**BCA** | Prestige Institute of Management & Research, Indore | 2019–2022 | CGPA: 9.58
+**BCA** | Prestige Institute of Management & Research, Indore<br>
+2019–2022 | CGPA: 9.58
