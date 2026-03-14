@@ -8,11 +8,12 @@ Create a single-page markdown resume targeting entry-level backend/SDE roles at 
 - One page when rendered/exported to PDF
 - Bullet points follow **Action + Tech + Impact** format
 - Clean, scannable layout optimized for ATS and recruiter screening
+- **One-page overflow strategy:** If content exceeds one page, trim project descriptions first, then reduce experience bullets. Skills grid and education stay compact.
 
 ## Section Order
 
 ### 1. Contact Info
-- Name, location (Bengaluru), email, phone
+- Name, location (Bengaluru), email, phone (user to fill in actual values)
 - LinkedIn and GitHub links
 - Single line, no frills
 
@@ -32,17 +33,21 @@ Create a single-page markdown resume targeting entry-level backend/SDE roles at 
 - Maintained and enhanced the core Healofy backend (Java/Spring Boot, PostgreSQL)
 
 **Analyst | Healofy | Aug 2024 - Apr 2025**
-- Transitioned from analyst to engineering role after demonstrating technical aptitude
+- Automated subscription and revenue reporting workflows, reducing manual effort by ~60%
+- Analyzed subscription and marketplace datasets to deliver actionable insights for Product, Finance, and Growth teams
+- Standardized reporting structures adopted organization-wide for key metrics and KPIs
 
 ### 4. Projects
 
 **SmartHire** - *Python, FastAPI, React*
 - AI-powered job recommendation platform that parses resumes and matches candidates to relevant positions using NLP-based skill extraction
-- (Placeholder - will update once project is rebuilt)
+- *[Bullets to be finalized after project rebuild — must follow Action + Tech + Impact format]*
 
 **Compete-Finder** - *Go, ConnectRPC, Protobuf*
 - Competitive intelligence tool that aggregates and analyzes startup ecosystem data
-- (Placeholder - will update once project is rebuilt)
+- *[Bullets to be finalized after project rebuild — must follow Action + Tech + Impact format]*
+
+**Note:** Projects are personal/side projects — no date ranges shown intentionally.
 
 ### 5. Education
 - **MCA** | Dayananda Sagar Academy of Technology & Management, Bengaluru | 2022-2024 | CGPA: 9.46
@@ -55,7 +60,5 @@ Create a single-page markdown resume targeting entry-level backend/SDE roles at 
 - **~5x framing for cost optimization:** Clean, impressive metric without overpromising
 - **Analyst role included but brief:** Shows growth trajectory from analyst to engineer at same company
 - **Project descriptions are placeholders:** Will be updated once Smarthire (Python/FastAPI + React) and Compete-Finder (Go/ConnectRPC) are rebuilt with real depth
-
-## Tech Stack for Projects (future rebuild)
-- **SmartHire:** Python, FastAPI, React — ML-powered resume-to-job matching
-- **Compete-Finder:** Go, ConnectRPC, Protobuf — startup data aggregation and analysis
+- **No certifications/awards section:** Intentionally excluded — not provided by user. Can be added later if relevant.
+- **Skills reflect actual experience only:** No padding with tools the candidate hasn't used professionally.
