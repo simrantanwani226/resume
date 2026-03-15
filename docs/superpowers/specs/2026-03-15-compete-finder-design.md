@@ -38,11 +38,22 @@ compete-finder/
 │   │   └── cache.go            # Redis/Dragonfly caching layer
 │   ├── heatmap/
 │   │   └── heatmap.go          # Market heatmap computation
-│   └── service/
-│       └── service.go          # ConnectRPC service implementation
+│   ├── service/
+│   │   └── service.go          # ConnectRPC service implementation
+│   └── web/
+│       ├── handler.go          # HTTP handlers for web UI
+│       ├── templates/
+│       │   ├── layout.html     # Base layout (head, nav, footer)
+│       │   ├── index.html      # Home — search form
+│       │   ├── results.html    # Competitor results (htmx partial)
+│       │   └── heatmap.html    # Market heatmap (htmx partial)
+│       └── static/
+│           └── style.css       # Minimal CSS
 ├── buf.yaml
 ├── buf.gen.yaml
 ├── go.mod
+├── Dockerfile
+├── docker-compose.yml
 └── README.md
 ```
 
@@ -78,7 +89,17 @@ compete-finder/
 4. Computes trend direction (growth/decline) across batches
 5. Returns batch-wise breakdown with trend indicators
 
-### 3. Engineering Defaults
+### 3. Web UI (htmx + Go Templates)
+
+**Minimal, server-rendered UI served from the same Go binary.**
+
+- **Home page:** Form with fields for startup name, description, sector. Submit triggers htmx POST.
+- **Results partial:** htmx swaps in a ranked table of competitors with match scores. No full page reload.
+- **Heatmap page:** Select a sector, see batch-wise trend table with visual indicators (color-coded UP/DOWN/FLAT).
+- **No JS framework, no build step.** Just Go `html/template`, htmx CDN link, and minimal CSS.
+- **Same server** serves both the web UI (HTTP) and ConnectRPC API — single port.
+
+### 4. Engineering Defaults
 
 - **Caching:** Redis/Dragonfly with TTL (15 minutes) for computed results
   - Cache key: SHA256 hash of `sector:description:limit` for FindCompetitors
@@ -242,4 +263,5 @@ Adding GitHub or HN enrichment later means implementing this interface.
 - **Redis/Dragonfly cache:** Avoids re-computing similarity scores for repeated queries. Also demonstrates caching knowledge from resume.
 - **ConnectRPC over plain REST:** Protobuf schemas enforce contract-first design. Code generation eliminates boilerplate. Compatible with gRPC clients too.
 - **Market heatmap as second feature:** Adds product value beyond basic competitor lookup. Uses the same data source with different aggregation logic — minimal extra complexity.
-- **No frontend:** CLI-only keeps focus on backend. Can demo with terminal recordings.
+- **htmx over React/SPA:** Keeps the entire project in Go. Server-rendered HTML with htmx for interactivity — no JS build pipeline, no node_modules. Shows you can build a full product without a frontend framework. Interview talking point.
+- **Docker Compose for demo:** One `docker compose up` starts server + Redis. Lowers the barrier for anyone reviewing the project.
