@@ -58,11 +58,15 @@ compete-finder/
 5. Return ranked list with match scores
 
 **Matching logic (two-stage):**
-- Stage 1: Filter by sector/industry tag (exact match)
+- Stage 1: Sector filter
+  - User input is case-insensitive and matched against each startup's `Industries` array
+  - Substring matching supported: `"fintech"` matches `"Fintech"`, `"Financial Technology Services"`
+  - A startup matches if ANY of its industry tags match
+  - If no sector matches found, return empty with a helpful error
 - Stage 2: TF-IDF + cosine similarity on descriptions
-  - Tokenize descriptions (lowercase, remove stop words)
-  - Compute TF-IDF weights
-  - Cosine similarity between user's description and each competitor
+  - IDF computed once over full YC corpus at load time (and rebuilt on data refresh)
+  - User's description tokenized and weighted against the pre-built IDF
+  - Cosine similarity between user's TF-IDF vector and each sector-filtered competitor
   - Score 0.0–1.0, sort descending
 
 ### 2. Market Heatmap
@@ -76,11 +80,14 @@ compete-finder/
 
 ### 3. Engineering Defaults
 
-- **Caching:** Redis/Dragonfly with TTL for API responses and computed results
-- **Rate limiting:** Token bucket on external API calls
+- **Caching:** Redis/Dragonfly with TTL (15 minutes) for computed results
+  - Cache key: SHA256 hash of `sector:description:limit` for FindCompetitors
+  - Cache key: `heatmap:sector` for GetMarketHeatmap
+  - If Redis is unavailable, fail open (serve without cache, log warning)
+- **Rate limiting:** Token bucket on inbound RPCs (reserved for future external API providers — YC static JSON needs no limiting)
 - **Structured logging:** Go slog with correlation IDs per request
 - **Graceful shutdown:** Context cancellation, clean server stop on SIGTERM/SIGINT
-- **Background data sync:** Periodic refresh of YC data using a worker goroutine
+- **Background data sync:** Worker goroutine refreshes YC data every 6 hours, uses `sync.RWMutex` for safe concurrent reads
 
 ## Protobuf API
 
@@ -98,7 +105,7 @@ message FindCompetitorsRequest {
   string name = 1;
   string description = 2;
   string sector = 3;
-  int32 limit = 4; // default 10
+  int32 limit = 4; // server treats 0 as default 10, max cap 50
 }
 
 message FindCompetitorsResponse {
@@ -149,6 +156,23 @@ compete-finder heatmap --sector "fintech"
 
 # Start server
 compete-finder serve --port 8080 --cache-addr localhost:6379
+
+# CLI flags for server address (default: localhost:8080)
+compete-finder find --server localhost:8080 --name "Razorpay" ...
+```
+
+## Domain Model
+
+```go
+type Startup struct {
+    Name        string
+    Description string
+    Industries  []string  // mapped from YC "industries" array
+    Batch       string    // e.g. "W24", "S23"
+    TeamSize    int       // 0 if unknown
+    Status      string    // "Active", "Dead", "Acquired"
+    URL         string
+}
 ```
 
 ## Data Source
@@ -156,9 +180,23 @@ compete-finder serve --port 8080 --cache-addr localhost:6379
 **YC Companies API:**
 - Endpoint: `https://yc-oss.github.io/api/meta.json`
 - Static JSON, no auth, no rate limits
-- ~5,000+ startups with: name, description, sector/tags, batch, team size, status, URL
+- ~5,000+ startups
+
+**YC API field mapping:**
+
+| YC JSON field | Startup struct field | Notes |
+|---|---|---|
+| `name` | `Name` | Direct map |
+| `one_liner` or `long_description` | `Description` | Use `one_liner`, fall back to `long_description` |
+| `industries` | `Industries` | Array of strings, e.g. `["Fintech", "B2B"]` |
+| `batch` | `Batch` | e.g. `"W24"` |
+| `team_size` | `TeamSize` | May be 0 or missing — treat as unknown |
+| `status` | `Status` | `"Active"`, `"Dead"`, `"Acquired"` |
+| `website` | `URL` | Company website |
+
 - Loaded into memory on server start
-- Background worker refreshes periodically (every 6 hours)
+- Background worker refreshes every 6 hours using atomic pointer swap (`sync.RWMutex` on store) to avoid data races with in-flight requests
+- TF-IDF index is rebuilt atomically on each refresh
 
 **Provider interface for extensibility:**
 ```go
@@ -169,6 +207,32 @@ type Provider interface {
 ```
 
 Adding GitHub or HN enrichment later means implementing this interface.
+
+## Error Handling
+
+- **YC API fetch fails on startup:** Server starts but logs error, retries on next sync cycle. Serves empty results with a clear error message until data is loaded.
+- **YC API fetch fails on refresh:** Keep serving stale data, log warning, retry next cycle.
+- **Redis unavailable:** Fail open — skip cache, compute results fresh, log warning.
+- **Empty/missing request fields:** Return `connect.CodeInvalidArgument` with descriptive message (e.g., "description is required").
+- **No sector matches found:** Return empty `competitors` list with `total_in_sector: 0`. CLI displays "No startups found in sector X. Try a broader term."
+- **Limit validation:** If `limit > 50`, cap at 50. If `limit == 0`, default to 10.
+
+## Heatmap Trend Calculation
+
+- **Trend per batch:** Compare startup count to previous batch. UP if >20% increase, DOWN if >20% decrease, FLAT otherwise.
+- **Market status thresholds (based on growth over last 4 batches):**
+  - HOT: growth_factor >= 2.0x
+  - WARM: growth_factor >= 1.3x
+  - COLD: growth_factor between 0.7x and 1.3x
+  - DECLINING: growth_factor < 0.7x
+- **growth_factor:** ratio of latest batch count to the batch 4 cycles ago (2 years).
+
+## Testing Strategy
+
+- **Unit tests:** TF-IDF scoring, sector matching, heatmap trend calculation, cache key generation
+- **Integration tests:** RPC layer with an in-memory cache implementation (same interface, no Redis needed)
+- **Test data:** Small fixture JSON mimicking YC API shape for deterministic tests
+- **No mocks for domain logic:** Test real matching against fixture data
 
 ## Design Decisions
 
