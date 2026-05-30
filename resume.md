@@ -9,7 +9,7 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ## Summary
 
-Ships production features end-to-end across Java, Go, TypeScript, and Kubernetes — from design and API spec through migration, implementation, and production rollout. Built subscription billing for **millions of users** and delivered a greenfield module into a large, established Java codebase.
+Built subscription billing for a **multi-million-user** consumer app and sole-authored a greenfield module inside a large, established Java codebase — shipping features end-to-end across Java, Go, TypeScript, and Kubernetes, from design through production rollout.
 
 ---
 
