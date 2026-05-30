@@ -9,7 +9,7 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ## Summary
 
-Built subscription billing for a **multi-million-user** consumer app and sole-authored a greenfield module inside a large, established Java codebase — shipping features end-to-end across Java, Go, TypeScript, and Kubernetes, from design through production rollout.
+Built subscription billing for a **multi-million-user** consumer app and sole-authored a greenfield module inside a large, established Java codebase — shipping features end-to-end across Java, Go, and TypeScript, from design through production rollout.
 
 ---
 
@@ -31,8 +31,7 @@ Built subscription billing for a **multi-million-user** consumer app and sole-au
 - Shipped a 3-level hierarchical content-catalog module in Java as a full vertical slice (REST controllers, service layer, JPA repositories, migration) — a **greenfield feature** added to a large, established monolith, serving ~4K multilingual content items to ~246K daily active users
 - Authored **2 Go microservices** (ConnectRPC, Protobuf, pgx v5, sqlc, OpenTelemetry) handling batches of 100 records/request with schema validation, composite-key dedup, and transactional audit logging — powering content delivery for two consumer apps
 - Built a multi-provider LLM orchestration service (TypeScript/Node.js, Vercel AI SDK) integrating **3 providers** (Claude, GPT, Mistral) with per-persona routing, per-user context injection, and per-provider timeout/retry — output capped at 1000 tokens to control cost and latency
-- Owned database infrastructure across **4 production PostgreSQL databases** — 10 schema migrations, a connection-pooling migration from pgbouncer to direct PostgreSQL, and analytics writes decoupled onto a Google Cloud Tasks queue, off the request path
-- Managed ArgoCD deployments across test and production for new Go microservices, and bootstrapped IaC (TypeScript) with secrets management for **3 third-party integrations** on a new product workstream
+- Owned database infrastructure across **4 production PostgreSQL databases** — schema migrations on live tables, a connection-pooling migration from pgbouncer to direct PostgreSQL, and analytics writes decoupled onto a Google Cloud Tasks queue, off the request path; also bootstrapped IaC (TypeScript) with secrets management for **3 third-party integrations**
 - Eliminated an N+1 query in cart personalization with batched prefetching — cut database round-trips from **O(N) to O(1)** per render in a high-traffic e-commerce flow
 
 ### Business Analyst | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | Aug 2024 – Apr 2025
