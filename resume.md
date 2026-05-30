@@ -20,7 +20,7 @@ Built subscription billing for a **multi-million-user** consumer app and sole-au
 - **Databases:** PostgreSQL (SQL), Redis & Dragonfly (NoSQL), pgx, sqlc
 - **DevOps & CI/CD:** Kubernetes (K3s), ArgoCD, Docker, Git, Maven, Google Cloud Tasks, OpenTelemetry
 - **Protocols:** gRPC / ConnectRPC, Protocol Buffers, REST
-- **Practices:** Microservices, Design Patterns, Clean Coding, Agile/Scrum
+- **Practices:** Microservices, Design Patterns, Clean Coding, TDD/BDD, Agile/Scrum
 
 ---
 
@@ -38,7 +38,7 @@ Built subscription billing for a **multi-million-user** consumer app and sole-au
 ### Business Analyst | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | Aug 2024 – Apr 2025
 
 - Automated subscription & revenue reporting, cutting manual effort by **~60%**
-- Established **company-wide** reporting standards for stakeholders across Product, Finance & Growth
+- Established **company-wide** reporting standards with clear stakeholder communication across Product, Finance & Growth
 
 ---
 
