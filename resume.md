@@ -1,5 +1,7 @@
 # Simran Tanwani
 
+Backend Software Engineer
+
 simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 [LinkedIn](https://linkedin.com/in/simran-tanwani) | [GitHub](https://github.com/simrantanwani226)
 
@@ -7,7 +9,7 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ## Summary
 
-Backend engineer owning features end-to-end across Java, Go, TypeScript, and Kubernetes — from design and API spec through migration, implementation, and production rollout. Built subscription billing for **millions of users** and delivered a greenfield module into a large, established Java codebase.
+Ships production features end-to-end across Java, Go, TypeScript, and Kubernetes — from design and API spec through migration, implementation, and production rollout. Built subscription billing for **millions of users** and delivered a greenfield module into a large, established Java codebase.
 
 ---
 
