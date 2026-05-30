@@ -15,10 +15,11 @@ Built subscription billing for a **multi-million-user** consumer app and sole-au
 
 ## Skills
 
-- **Languages:** Go, Java, Python, JavaScript/TypeScript
-- **Frameworks:** Spring Boot, ConnectRPC, Go Fiber, React, FastAPI
-- **Databases:** PostgreSQL, Redis, Dragonfly
-- **DevOps:** Kubernetes (K3s), ArgoCD, Docker, Git
+- **Languages:** Go, Java, JavaScript/TypeScript
+- **Frameworks:** Spring Boot, Go Fiber, Node.js, Vercel AI SDK
+- **Databases:** PostgreSQL (pgx, sqlc), Redis, Dragonfly
+- **DevOps:** Kubernetes (K3s), ArgoCD, Docker, Git, Google Cloud Tasks, OpenTelemetry
+- **Protocols:** gRPC / ConnectRPC, Protocol Buffers, REST
 
 ---
 
