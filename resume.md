@@ -15,7 +15,7 @@ Built subscription billing for a **multi-million-user** consumer app and sole-au
 
 ## Skills
 
-- **Languages:** Go, Java, JavaScript/TypeScript
+- **Languages:** Go, Java 8+ (Lambda expressions, Streams), JavaScript/TypeScript
 - **Frameworks:** Spring Boot, Spring Framework, JPA, Go Fiber, Node.js, Vercel AI SDK
 - **Databases:** PostgreSQL (SQL), Redis & Dragonfly (NoSQL), pgx, sqlc
 - **DevOps & CI/CD:** Kubernetes (K3s), ArgoCD, Docker, Git, Maven, Google Cloud Tasks, OpenTelemetry
