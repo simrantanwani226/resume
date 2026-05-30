@@ -1,0 +1,9 @@
+# Private job applications — JDs, tailored resumes, and the tracking log.
+# Never committed or pushed; lives only on your machine.
+applications/
+
+# Build intermediate
+.build.html
+
+# macOS
+.DS_Store
