@@ -5,6 +5,12 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ---
 
+## Summary
+
+Backend software engineer shipping production features across Java, Go, and TypeScript. Built subscription billing for **millions of users** and shipped the **only solo greenfield module into a legacy monolith** last year — owning design, migrations, and deployment.
+
+---
+
 ## Skills
 
 - **Languages:** Go, Java, Python, JavaScript/TypeScript
@@ -18,34 +24,30 @@ simrantanwani0226@gmail.com | +91-6268215757 | Bengaluru |
 
 ### SDE-1 | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | May 2025 – Present
 
-- Primary backend developer for [**Matrrverse**](https://apps.apple.com/in/app/matrrverse/id6751951342) and **Astroverse** apps, building user-facing content APIs using Go and ConnectRPC
-- Integrated Fynd third-party platform into the Java/Spring Boot system
-- Contributed to **~5x reduction** in monthly cloud spend as part of the team by optimizing build and deployment infrastructure
-- Built internal user-facing tools on the Healofy app using Go Fiber
-- Maintained and enhanced the core Healofy backend (Java/Spring Boot, PostgreSQL)
+- Built a 3-tier subscription billing system (Java/Spring Boot, PostgreSQL, Razorpay) with multi-currency pricing and app-version-aware feature gating for a consumer app with **millions of users** — enabling safe rollouts to older Android clients and renewal tracking for revenue analytics
+- Shipped a 3-level hierarchical content-catalog module in Java as a full vertical slice (REST controllers, service layer, JPA repositories, migration) — the **only greenfield feature** added solo to a large legacy monolith that year
+- Authored **2 Go microservices** (ConnectRPC, Protobuf, pgx v5, sqlc, OpenTelemetry) handling batches of 100 records/request with schema validation, composite-key dedup, and transactional audit logging — powering production content features
+- Built a multi-provider LLM orchestration service (TypeScript/Node.js, Vercel AI SDK) integrating **3 providers** (Claude, GPT, Mistral) with per-persona routing, per-user context injection, and per-provider timeout/retry — output capped at 1000 tokens to control cost and latency
+- Authored **10 PostgreSQL migrations** across 4 production databases, migrated connection pooling from pgbouncer to direct PostgreSQL, and ran ArgoCD deployments across test/prod for new Go services — and moved analytics onto a Google Cloud Tasks queue, off the request path
+- Eliminated an N+1 query in cart personalization with batched prefetching — cut database round-trips from **O(N) to O(1)** per render in a high-traffic e-commerce flow
 
 ### Business Analyst | [Healofy](https://play.google.com/store/apps/details?id=com.healofy) | Aug 2024 – Apr 2025
 
-- Automated subscription and revenue reporting workflows, reducing manual effort by **~60%**
-- Analyzed subscription and marketplace datasets to deliver actionable insights for Product, Finance, and Growth teams
-- Standardized reporting structures adopted **organization-wide** for key metrics and KPIs
+- Automated subscription & revenue reporting, cutting manual effort by **~60%**
+- Built **company-wide** reporting standards across Product, Finance & Growth teams
 
 ---
 
 ## Projects
 
-**SmartHire** - *Python, FastAPI, React*
-- AI-powered job recommendation platform that parses resumes and matches candidates to relevant positions using NLP-based skill extraction
+**[Compete-Finder](https://github.com/simrantanwani226/Compete-Finder)** - *Go, Connect RPC, Protobuf* - scores Y Combinator startups by TF-IDF similarity to surface the top-N competitors for a product, with a sector-growth heatmap across YC batches
 
-**Compete-Finder** - *Go, ConnectRPC, Protobuf*
-- Competitive intelligence tool that aggregates and analyzes startup ecosystem data
+**[QuickMatch](https://github.com/simrantanwani226/QuickMatch)** - *Java, Spring Boot* - layered REST service (controller/service/repository, JPA + H2) scoring keyword overlap between a resume and a job description
 
 ---
 
 ## Education
 
-**MCA** | Dayananda Sagar Academy of Technology & Management, Bengaluru<br>
-2022–2024 | CGPA: 9.46
+**MCA**, Dayananda Sagar Academy of Technology & Management — 2022–2024 · CGPA 9.46
 
-**BCA** | Prestige Institute of Management & Research, Indore<br>
-2019–2022 | CGPA: 9.58
+**BCA**, Prestige Institute of Management & Research — 2019–2022 · CGPA 9.58
